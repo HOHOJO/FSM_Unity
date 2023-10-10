@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -33,8 +34,10 @@ public class Weapon : MonoBehaviour
             Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
             forceReceiver.AddForce(direction * knockback);
         }
-
-
+        if(myCollider.tag=="Player")
+        {
+            
+        }
     }
 
     public void SetAttack(int damage, float knockback)

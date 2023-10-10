@@ -21,9 +21,10 @@ public class CharacterHealth : MonoBehaviour
         if (health == 0) return;
         health = Mathf.Max(health - damage, 0);
 
-        if (health == 0)
+        if (health == 0) {
             OnDie?.Invoke();
-
+            gameObject.SetActive(false);
+        }
         Debug.Log(health);
     }
 
