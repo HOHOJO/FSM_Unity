@@ -26,4 +26,9 @@ public class CharacterHealth : MonoBehaviour
 
         Debug.Log(health);
     }
+
+    public int returnHP()
+    {
+        return health;
+    }
 }
