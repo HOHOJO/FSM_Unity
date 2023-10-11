@@ -52,62 +52,57 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void Spawn()
-    {
+    //void Spawn_1()
+    //{
+    //    if (num < 10)
+    //    {
+    //        int random = Random.Range(1, 9);
+    //        GameObject obj;
+    //        switch (random)
+    //        {
+    //            case 1:
+    //                nums[num] = Instantiate(Enemy, SpawnPoint1.position, Quaternion.identity);
+    //                Enemys.Add(nums[num]);
+    //                num++;
+    //                break;
+    //            case 2:
+    //                nums[num] = Instantiate(Enemy, SpawnPoint2.position, Quaternion.identity);
+    //                Enemys.Add(nums[num]);
+    //                break;
+    //            case 3:
+    //                nums[num] = Instantiate(Enemy, SpawnPoint3.position, Quaternion.identity);
+    //                Enemys.Add(nums[num]);
+    //                num++;
+    //                break;
+    //            case 4:
+    //                nums[num] = Instantiate(Enemy, SpawnPoint4.position, Quaternion.identity);
+    //                Enemys.Add(nums[num]);
+    //                num++;
+    //                break;
+    //            case 5:
+    //                nums[num] = Instantiate(Enemy, SpawnPoint5.position, Quaternion.identity);
+    //                Enemys.Add(nums[num]);
+    //                num++;
+    //                break;
+    //            case 6:
+    //                nums[num] = Instantiate(Enemy, SpawnPoint6.position, Quaternion.identity);
+    //                Enemys.Add(nums[num]);
+    //                num++;
+    //                break;
+    //            case 7:
+    //                obj = Instantiate(Enemy, SpawnPoint7.position, Quaternion.identity);
+    //                Enemys.Add(nums[num]);
+    //                num++;
+    //                break;
+    //            case 8:
+    //                nums[num] = Instantiate(Enemy, SpawnPoint8.position, Quaternion.identity);
+    //                Enemys.Add(nums[num]);
+    //                num++;
+    //                break;
+    //        }
 
-    }
-
-    void Spawn_1()
-    {
-        if (num < 10)
-        {
-            int random = Random.Range(1, 9);
-            GameObject obj;
-            switch (random)
-            {
-                case 1:
-                    nums[num] = Instantiate(Enemy, SpawnPoint1.position, Quaternion.identity);
-                    Enemys.Add(nums[num]);
-                    num++;
-                    break;
-                case 2:
-                    nums[num] = Instantiate(Enemy, SpawnPoint2.position, Quaternion.identity);
-                    Enemys.Add(nums[num]);
-                    break;
-                case 3:
-                    nums[num] = Instantiate(Enemy, SpawnPoint3.position, Quaternion.identity);
-                    Enemys.Add(nums[num]);
-                    num++;
-                    break;
-                case 4:
-                    nums[num] = Instantiate(Enemy, SpawnPoint4.position, Quaternion.identity);
-                    Enemys.Add(nums[num]);
-                    num++;
-                    break;
-                case 5:
-                    nums[num] = Instantiate(Enemy, SpawnPoint5.position, Quaternion.identity);
-                    Enemys.Add(nums[num]);
-                    num++;
-                    break;
-                case 6:
-                    nums[num] = Instantiate(Enemy, SpawnPoint6.position, Quaternion.identity);
-                    Enemys.Add(nums[num]);
-                    num++;
-                    break;
-                case 7:
-                    obj = Instantiate(Enemy, SpawnPoint7.position, Quaternion.identity);
-                    Enemys.Add(nums[num]);
-                    num++;
-                    break;
-                case 8:
-                    nums[num] = Instantiate(Enemy, SpawnPoint8.position, Quaternion.identity);
-                    Enemys.Add(nums[num]);
-                    num++;
-                    break;
-            }
-
-        }
-    }
+    //    }
+    //}
 
     void Spawn_2()
     {
