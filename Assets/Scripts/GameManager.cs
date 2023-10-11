@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
-public class GameManeger : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     public TMP_Text HP;
     public TMP_Text Score;
     public TMP_Text total;
@@ -14,6 +17,7 @@ public class GameManeger : MonoBehaviour
     public GameObject Enemy;
 
     private List<GameObject> Enemys;
+    private GameObject[] nums;
     private int Score_Value;
 
     public Transform SpawnPoint1;
@@ -24,90 +28,156 @@ public class GameManeger : MonoBehaviour
     public Transform SpawnPoint6;
     public Transform SpawnPoint7;
     public Transform SpawnPoint8;
-    
     private int num = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         Enemys = new List<GameObject>();
+        nums = new GameObject[20];
         Score_Value = 0;
+        Score.text = Score_Value.ToString();
         HP.text = Player.CharacterHealth.returnHP().ToString();
-        GameObject Ob = Instantiate(Enemy, SpawnPoint1.position, Quaternion.identity);
-        Enemys.Add(Ob);
-        num++;
     }
 
     // Update is called once per frame
     void Update()
     {
         HP.text = Player.CharacterHealth.returnHP().ToString();
-        if(Player.enabled)
+        
+        if(num<10)
         {
-            if (Enemys != null) Invoke("Spawn",20f);
+            if(Enemy!= null) { Spawn_2(); }
         }
-        EnemyDie();
-        Score.text = Score_Value.ToString();
+
     }
 
     void Spawn()
     {
-        if (Enemys.Count < 8)
+
+    }
+
+    void Spawn_1()
+    {
+        if (num < 10)
         {
             int random = Random.Range(1, 9);
             GameObject obj;
             switch (random)
             {
                 case 1:
-                    obj = Instantiate(Enemy, SpawnPoint1.position, Quaternion.identity);
-                    Enemys.Add(obj);
+                    nums[num] = Instantiate(Enemy, SpawnPoint1.position, Quaternion.identity);
+                    Enemys.Add(nums[num]);
+                    num++;
                     break;
                 case 2:
-                    obj = Instantiate(Enemy, SpawnPoint2.position, Quaternion.identity);
-                    Enemys.Add(obj);
+                    nums[num] = Instantiate(Enemy, SpawnPoint2.position, Quaternion.identity);
+                    Enemys.Add(nums[num]);
                     break;
                 case 3:
-                    obj = Instantiate(Enemy, SpawnPoint3.position, Quaternion.identity);
-                    Enemys.Add(obj);
+                    nums[num] = Instantiate(Enemy, SpawnPoint3.position, Quaternion.identity);
+                    Enemys.Add(nums[num]);
+                    num++;
                     break;
                 case 4:
-                    obj = Instantiate(Enemy, SpawnPoint4.position, Quaternion.identity);
-                    Enemys.Add(obj);
+                    nums[num] = Instantiate(Enemy, SpawnPoint4.position, Quaternion.identity);
+                    Enemys.Add(nums[num]);
+                    num++;
                     break;
                 case 5:
-                    obj = Instantiate(Enemy, SpawnPoint5.position, Quaternion.identity);
-                    Enemys.Add(obj);
+                    nums[num] = Instantiate(Enemy, SpawnPoint5.position, Quaternion.identity);
+                    Enemys.Add(nums[num]);
+                    num++;
                     break;
                 case 6:
-                    obj = Instantiate(Enemy, SpawnPoint6.position, Quaternion.identity);
-                    Enemys.Add(obj);
+                    nums[num] = Instantiate(Enemy, SpawnPoint6.position, Quaternion.identity);
+                    Enemys.Add(nums[num]);
+                    num++;
                     break;
                 case 7:
                     obj = Instantiate(Enemy, SpawnPoint7.position, Quaternion.identity);
-                    Enemys.Add(obj);
+                    Enemys.Add(nums[num]);
+                    num++;
                     break;
                 case 8:
-                    obj = Instantiate(Enemy, SpawnPoint8.position, Quaternion.identity);
-                    Enemys.Add(obj);
+                    nums[num] = Instantiate(Enemy, SpawnPoint8.position, Quaternion.identity);
+                    Enemys.Add(nums[num]);
+                    num++;
                     break;
             }
-            num++;
+
         }
     }
 
-    void EnemyDie()
+    void Spawn_2()
     {
-        if(Enemys!=null)
+        if (num < 10)
         {
-            for (int i = Enemys.Count - 1; i >= 0; i--)
+            int random = Random.Range(1, 9);
+            GameObject obj;
+            switch (random)
             {
-                if (!Enemys[i].activeSelf)
-                {
-                    Enemys.Remove(Enemys[i]);
-                    num--;
-                }
+                case 1:
+                    Instantiate(Enemy, SpawnPoint1.position, Quaternion.identity);
+                    num ++;
+                    total.text = num.ToString();
+                    break;
+                case 2:
+                    Instantiate(Enemy, SpawnPoint2.position, Quaternion.identity);
+                    num++;
+                    total.text = num.ToString();
+                    break;
+                case 3:
+                    Instantiate(Enemy, SpawnPoint3.position, Quaternion.identity);
+                    num++;
+                    total.text = num.ToString();
+                    break;
+                case 4:
+                    Instantiate(Enemy, SpawnPoint4.position, Quaternion.identity);
+                    num++;
+                    total.text = num.ToString();
+                    break;
+                case 5:
+                    Instantiate(Enemy, SpawnPoint5.position, Quaternion.identity);
+                    num++;
+                    total.text = num.ToString();
+                    break;
+                case 6:
+                    Instantiate(Enemy, SpawnPoint6.position, Quaternion.identity);
+                    num++;
+                    total.text = num.ToString();
+                    break;
+                case 7:
+                    Instantiate(Enemy, SpawnPoint7.position, Quaternion.identity);
+                    num++;
+                    total.text = num.ToString();
+                    break;
+                case 8:
+                    Instantiate(Enemy, SpawnPoint8.position, Quaternion.identity);
+                    num++;
+                    total.text = num.ToString();
+                    break;
+            }
+
+        }
+    }
+
+    public void Enemydie()
+    {
+        Score_Value += 50 ;
+        Score.text = Score_Value.ToString();
+        num--;
+        total.text = num.ToString();
+    }
+
+    public void Died()
+    {
+        for(int i = 0; i<nums.Length; i++) 
+        {
+            if (nums[i].activeSelf == false)
+            {
+                Destroy(nums[i]);
             }
         }
-
     }
 }

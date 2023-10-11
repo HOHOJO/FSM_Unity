@@ -34,10 +34,6 @@ public class Weapon : MonoBehaviour
             Vector3 direction = (other.transform.position - myCollider.transform.position).normalized;
             forceReceiver.AddForce(direction * knockback);
         }
-        if(myCollider.tag=="Player")
-        {
-            
-        }
     }
 
     public void SetAttack(int damage, float knockback)

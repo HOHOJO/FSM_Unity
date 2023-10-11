@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
@@ -23,7 +24,6 @@ public class CharacterHealth : MonoBehaviour
 
         if (health == 0) {
             OnDie?.Invoke();
-            gameObject.SetActive(false);
         }
         Debug.Log(health);
     }

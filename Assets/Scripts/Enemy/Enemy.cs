@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -19,10 +20,12 @@ public class Enemy : MonoBehaviour
     [field: SerializeField] public Weapon Weapon { get; private set; }
     public CharacterHealth CharacterHealth { get; private set; }
 
+    public GameManager gm;
+
     void Awake()
     {
         AnimationData.Initialize();
-
+        gm= GameObject.Find("GameManager").GetComponent<GameManager>();
         Rigidbody = GetComponent<Rigidbody>();
         Animator = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();
@@ -53,6 +56,15 @@ public class Enemy : MonoBehaviour
     void OnDie()
     {
         Animator.SetTrigger("Die");
+        Invoke("delete",6f);
         enabled = false;
+    }
+
+    void delete()
+    {
+        gameObject.SetActive(false);
+        gm.Enemydie();
+        Debug.Log("ªË¡¶");
+        Destroy(gameObject);
     }
 }
